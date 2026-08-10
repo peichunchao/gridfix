@@ -225,7 +225,7 @@
 
     <h1>GridFix 隱私權政策</h1>
     <p class="meta">
-      <strong>生效日期：</strong>2026 年 8 月 3 日<br>
+      <strong>生效日期：</strong>2026 年 8 月 10 日<br>
       <strong>適用版本：</strong>GridFix 1.1 起
     </p>
 
@@ -299,15 +299,33 @@
 
     <p>照片檔案本身通常帶有中繼資料（EXIF／TIFF），可能包含拍攝時間、相機與鏡頭型號、曝光參數，以及<strong>原始拍攝地點的 GPS 座標</strong>。本 App 對這些資料的處理如下：</p>
 
-    <ul>
-      <li><strong>本 App 不會讀取、解析或傳送這些中繼資料的內容，也不會用它來判斷您的所在位置。</strong>它們只是在編碼輸出檔時被原樣寫回。</li>
-      <li><strong>匯入照片編輯後輸出：</strong>輸出檔會<strong>完整保留原始照片的中繼資料，包含其中既有的 GPS 位置資訊</strong>。本 App 只會修正兩項與影像本身相關的標籤——方向（Orientation）與像素尺寸——因為校正後的影像已與原檔不同。</li>
-      <li><strong>以「即時校正拍攝」拍照：</strong>付費版的輸出會保留相機當下產生的中繼資料；免費版的輸出<strong>不含任何中繼資料</strong>。無論哪一種，本 App 都不會主動加入位置資訊，因為本 App 未使用定位服務。</li>
-      <li><strong>錄影：</strong>影片檔不含位置資訊。</li>
-    </ul>
+    <p><strong>本 App 不會讀取、解析或傳送這些中繼資料的內容，也不會用它來判斷您的所在位置。</strong>本 App 未使用定位服務，任何情況下都不會主動為您的照片加上位置資訊。中繼資料在輸出檔中的去留，依方案而不同：</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>輸出來源</th><th>免費版</th><th>訂閱／買斷</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>匯入照片編輯後輸出</td>
+            <td><strong>移除鏡頭、曝光、機型、GPS 位置等拍攝資訊</strong>，僅保留原始拍攝日期與方向標籤</td>
+            <td>完整保留原始照片的中繼資料，包含其中既有的 GPS 位置資訊</td>
+          </tr>
+          <tr>
+            <td>以「即時校正拍攝」拍照</td>
+            <td><strong>不含任何中繼資料</strong></td>
+            <td>完整保留相機當下產生的中繼資料</td>
+          </tr>
+          <tr><td>錄影（訂閱功能）</td><td>─</td><td>影片檔不含位置資訊</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>免費版保留拍攝日期，是為了讓修過的舊照片在系統「照片」中仍排在原本的時間位置，不會全部跳到今天；方向標籤則是影像顯示所必需。無論哪個方案，輸出時都會把方向（Orientation）與像素尺寸重寫成與校正後影像相符的值，因為校正後的影像已與原檔不同。</p>
 
     <div class="note">
-      <p>簡而言之：<strong>本 App 不會替您的照片新增位置，但也不會替您移除原本就有的位置。</strong>若您打算公開分享編輯後的照片，而原始照片是在「相機」的定位權限開啟時拍攝的，該照片可能仍帶有拍攝地點座標。您可以在系統「照片」App 分享時點選「選項」並關閉「位置」，或以其他工具移除後再行分享。</p>
+      <p>簡而言之：<strong>本 App 永遠不會替您的照片新增位置。免費版輸出會移除原本就有的位置，訂閱版則完整保留。</strong>因此，若您是訂閱用戶且打算公開分享編輯後的照片，而原始照片是在「相機」的定位權限開啟時拍攝的，該照片會仍帶有拍攝地點座標。您可以在系統「照片」App 分享時點選「選項」並關閉「位置」，或以其他工具移除後再行分享。</p>
     </div>
 
     <h2>四、儲存在您裝置上的資料</h2>
@@ -320,18 +338,34 @@
           <tr><th>資料</th><th>儲存位置</th><th>用途</th></tr>
         </thead>
         <tbody>
-          <tr><td>格線模式、自動轉正水平等拍攝偏好</td><td>UserDefaults</td><td>記住您的設定</td></tr>
+          <tr><td>格線模式、自動轉正水平、拍攝與錄影格式等偏好</td><td>UserDefaults</td><td>記住您的設定</td></tr>
           <tr><td>放大鏡位置偏好</td><td>UserDefaults</td><td>記住您的設定</td></tr>
+          <tr><td>介面語言偏好</td><td>UserDefaults</td><td>記住您選擇的顯示語言</td></tr>
           <tr><td>水平感測校正的偏移值與校正時間</td><td>UserDefaults</td><td>扣除感測器固定誤差</td></tr>
           <tr><td>評分提示的計次與上次提示時間</td><td>UserDefaults</td><td>避免重複打擾</td></tr>
-          <tr><td>免費版每日輸出次數與日期</td><td>鑰匙圈（Keychain）</td><td>計算免費額度</td></tr>
+          <tr><td>免費版每日編輯輸出次數與相機儲存張數，及其日期</td><td>鑰匙圈（Keychain）</td><td>計算免費額度</td></tr>
+          <tr><td>編輯紀錄庫（原圖副本、校正參數、成品與縮圖）</td><td>App 私有目錄</td><td>讓您回到先前的編輯繼續調整</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p>其中每日輸出次數存放於鑰匙圈，是為了讓免費額度不會因「移除後重新安裝」而被繞過。該項目以 <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code> 儲存，<strong>僅限本裝置、不會同步至 iCloud 鑰匙圈</strong>，僅包含一個次數與一個日期，每日自動歸零，不含任何可識別您身分的資訊。它在您移除 App 後仍會留存於裝置上，這是上述設計的必然結果，詳見第八節。</p>
+    <p>其中兩個每日額度計數器（編輯輸出次數與相機儲存張數）存放於鑰匙圈，是為了讓免費額度不會因「移除後重新安裝」而被繞過。這些項目以 <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code> 儲存，<strong>僅限本裝置、不會同步至 iCloud 鑰匙圈</strong>，僅包含兩個次數與一個共用的日期，每日自動歸零，不含任何可識別您身分的資訊。它們在您移除 App 後仍會留存於裝置上，這是上述設計的必然結果，詳見第八節。</p>
 
-    <p>您拍攝的照片與影片，其原始檔案存放於系統「照片」App 中，由您完全掌控。App 內相簿僅在該次相機使用期間存在於記憶體中，關閉相機即清空。</p>
+    <h3>編輯紀錄庫</h3>
+
+    <p>當您匯入照片開始編輯時，本 App 會在裝置本機建立一筆「編輯紀錄」，讓您日後能回到同一張照片繼續調整。一筆紀錄包含作為編輯基準的原圖副本、目前的校正參數（引導線位置與各項角度、位移數值），以及校正後的成品與一張供列表顯示的縮圖。</p>
+
+    <ul>
+      <li><strong>儲存位置：</strong>本 App 在裝置上的私有目錄（Application Support），其他 App 無法讀取。</li>
+      <li><strong>不會離開裝置：</strong>這些檔案已標記為排除備份，<strong>不會進入 iCloud 備份或電腦備份</strong>，也不會同步到您的其他裝置。它們與本 App 的其他資料一樣，不會被上傳到任何伺服器。</li>
+      <li><strong>數量上限：</strong>最多保留 100 筆，超過時自動淘汰最久未更新的一筆。</li>
+      <li><strong>刪除方式：</strong>您可以在 App 內的紀錄列表中長按任一筆紀錄將其刪除；移除本 App 則會一併刪除全部紀錄。</li>
+      <li><strong>免費版的原圖副本</strong>長邊會縮至 4032 像素以節省空間；訂閱者則保留匯入時的完整解析度。</li>
+    </ul>
+
+    <p>您拍攝的照片與影片，其原始檔案存放於系統「照片」App 中，由您完全掌控。請注意本 App 內有兩份性質不同的清單：相機畫面中的「本次拍攝」僅存在於記憶體中，關閉相機即清空；上述的編輯紀錄庫則會長期保存，直到您刪除為止。</p>
+
+    <p>此外，當您使用分享功能時，本 App 會在系統暫存目錄產生一份輸出檔交給分享對象。該檔案會在您下次分享時自動清除，也會隨 iOS 對暫存空間的清理一併移除。</p>
 
     <h2>五、購買與訂閱</h2>
     <ul>
@@ -349,12 +383,12 @@
 
     <h2>八、資料保留與刪除</h2>
     <p>由於本 App 不蒐集任何資料，我們手上沒有任何屬於您的資料，因此也沒有需要向我們申請刪除的對象。</p>
-    <p>若您希望清除本 App 儲存在裝置上的偏好設定（即第四節表格中 UserDefaults 的部分），<strong>將本 App 從裝置移除即可</strong>。</p>
-    <p>關於鑰匙圈中的每日輸出次數紀錄，請注意以下三點：</p>
+    <p>若您希望清除本 App 儲存在裝置上的偏好設定（即第四節表格中 UserDefaults 的部分）以及整個編輯紀錄庫，<strong>將本 App 從裝置移除即可</strong>。編輯紀錄也可以在 App 內的紀錄列表中個別刪除，不必移除整個 App。</p>
+    <p>關於鑰匙圈中的每日額度計數器（編輯輸出次數與相機儲存張數），請注意以下三點：</p>
     <ul>
-      <li>依 iOS 對鑰匙圈項目的處理方式，該項目在移除 App 後仍會留存於裝置上。如第四節所述，這是刻意的設計，用於避免每日免費額度被「移除後重新安裝」繞過；因此重新安裝本 App 並不會將它清空。</li>
-      <li>該項目僅包含一個次數與一個日期，且每日自動歸零，不含任何可識別您身分的資訊。</li>
-      <li>由於本 App 沒有伺服器，也不會與我們的任何系統連線，<strong>我們無法從遠端存取、讀取或刪除您裝置上的任何資料</strong>，包括這一項。它完全存放在您的裝置本機，我們既看不到也碰不到。</li>
+      <li>依 iOS 對鑰匙圈項目的處理方式，這些項目在移除 App 後仍會留存於裝置上。如第四節所述，這是刻意的設計，用於避免每日免費額度被「移除後重新安裝」繞過；因此重新安裝本 App 並不會將它們清空，App 內也沒有提供重設入口。</li>
+      <li>它們僅包含兩個次數與一個日期，且每日自動歸零，不含任何可識別您身分的資訊。</li>
+      <li>由於本 App 沒有伺服器，也不會與我們的任何系統連線，<strong>我們無法從遠端存取、讀取或刪除您裝置上的任何資料</strong>，包括這些項目。它們完全存放在您的裝置本機，我們既看不到也碰不到。</li>
     </ul>
 
     <h2>九、第三方</h2>
@@ -394,7 +428,7 @@
 
     <h1>GridFix Privacy Policy</h1>
     <p class="meta">
-      <strong>Effective date:</strong> 3 August 2026<br>
+      <strong>Effective date:</strong> 10 August 2026<br>
       <strong>Applies to:</strong> GridFix 1.1 and later
     </p>
 
@@ -444,15 +478,33 @@
 
     <p>A photo file usually carries metadata of its own (EXIF/TIFF), which may include the capture time, the camera and lens, exposure settings, and <strong>the GPS coordinates of where it was taken</strong>. GridFix handles this as follows:</p>
 
-    <ul>
-      <li><strong>GridFix does not read, parse, or transmit the contents of that metadata, and does not use it to determine where you are.</strong> It is simply written back out when the exported file is encoded.</li>
-      <li><strong>Exporting an imported photo:</strong> the exported file <strong>retains the original photo's metadata in full, including any GPS location already present</strong>. GridFix rewrites only two tags that describe the image itself — orientation and pixel dimensions — because the corrected image differs from the original.</li>
-      <li><strong>Photos taken with the live-corrected camera:</strong> paid exports retain the metadata the camera produced; free-tier exports <strong>contain no metadata at all</strong>. In neither case does GridFix add location information, as it does not use location services.</li>
-      <li><strong>Video:</strong> recordings contain no location information.</li>
-    </ul>
+    <p><strong>GridFix does not read, parse, or transmit the contents of that metadata, and does not use it to determine where you are.</strong> GridFix does not use location services and never adds location information to your photos under any circumstances. What survives into an exported file depends on your tier:</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Output</th><th>Free</th><th>Subscribed / lifetime</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Exporting an imported photo</td>
+            <td><strong>Lens, exposure, camera model and GPS location are removed</strong>; only the original capture date and the orientation tags are kept</td>
+            <td>The original photo's metadata is retained in full, including any GPS location already present</td>
+          </tr>
+          <tr>
+            <td>Photos taken with the live-corrected camera</td>
+            <td><strong>No metadata at all</strong></td>
+            <td>The metadata the camera produced is retained in full</td>
+          </tr>
+          <tr><td>Video (a subscriber feature)</td><td>—</td><td>Recordings contain no location information</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The capture date is kept on free exports so an edited older photo still sits in its original place in the Photos timeline rather than jumping to today; the orientation tag is required for the image to display correctly. On either tier, orientation and pixel dimensions are rewritten to match the corrected image, because the corrected image differs from the original.</p>
 
     <div class="note">
-      <p>In short: <strong>GridFix never adds location to your photos, and never removes location that was already there.</strong> If you intend to share an edited photo publicly and the original was taken with the Camera's location permission enabled, that photo may still carry the coordinates of where it was taken. You can turn this off in the system Photos app by tapping “Options” in the share sheet and disabling “Location”, or strip it with a tool of your choice before sharing.</p>
+      <p>In short: <strong>GridFix never adds location to your photos. Free exports remove location that was already there; subscriber exports keep it.</strong> So if you are a subscriber intending to share an edited photo publicly, and the original was taken with the Camera's location permission enabled, that photo will still carry the coordinates of where it was taken. You can turn this off in the system Photos app by tapping “Options” in the share sheet and disabling “Location”, or strip it with a tool of your choice before sharing.</p>
     </div>
 
     <h2>4. Data stored on your device</h2>
@@ -463,18 +515,34 @@
           <tr><th>Data</th><th>Where</th><th>Purpose</th></tr>
         </thead>
         <tbody>
-          <tr><td>Grid mode, auto-level and other shooting preferences</td><td>UserDefaults</td><td>Remember your settings</td></tr>
+          <tr><td>Grid mode, auto-level, capture and recording format, and other shooting preferences</td><td>UserDefaults</td><td>Remember your settings</td></tr>
           <tr><td>Loupe corner preference</td><td>UserDefaults</td><td>Remember your settings</td></tr>
+          <tr><td>Interface language preference</td><td>UserDefaults</td><td>Remember the language you chose</td></tr>
           <tr><td>Sensor calibration offsets and date</td><td>UserDefaults</td><td>Subtract a fixed sensor error</td></tr>
           <tr><td>Review prompt counters</td><td>UserDefaults</td><td>Avoid asking repeatedly</td></tr>
-          <tr><td>Free-tier daily export count and date</td><td>Keychain</td><td>Enforce the free allowance</td></tr>
+          <tr><td>Free-tier daily editor-export count and camera-save count, and their date</td><td>Keychain</td><td>Enforce the free allowances</td></tr>
+          <tr><td>Edit-record library (baseline copy, correction parameters, result and thumbnail)</td><td>App-private directory</td><td>Let you return to an earlier edit</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p>The export count is kept in the keychain so that the free allowance cannot be bypassed by deleting and reinstalling the app. It is stored with <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code> — <strong>this device only, never synced to iCloud Keychain</strong> — consists of one number and one date, resets itself each day, and contains nothing that identifies you. It survives removal of the app, which follows directly from the purpose above; see section 8.</p>
+    <p>The two daily counters — editor exports and camera saves — are kept in the keychain so that the free allowances cannot be bypassed by deleting and reinstalling the app. They are stored with <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code> — <strong>this device only, never synced to iCloud Keychain</strong> — consist of two numbers and one shared date, reset themselves each day, and contain nothing that identifies you. They survive removal of the app, which follows directly from the purpose above; see section 8.</p>
 
-    <p>Photos and videos you capture live in the system Photos app, under your control. The in-app gallery exists only in memory for the duration of one camera session.</p>
+    <h3>Edit-record library</h3>
+
+    <p>When you import a photo to edit, GridFix creates an “edit record” on your device so you can come back to that photo and carry on adjusting it later. A record holds a baseline copy of the photo, the current correction parameters (guide-line positions and the various angle and offset values), the corrected result, and a thumbnail for the list.</p>
+
+    <ul>
+      <li><strong>Where:</strong> a directory private to GridFix on your device (Application Support), which no other app can read.</li>
+      <li><strong>It does not leave the device:</strong> these files are marked as excluded from backup, so they <strong>do not go into iCloud or computer backups</strong> and do not sync to your other devices. Like everything else in the app, they are never uploaded to any server.</li>
+      <li><strong>Limit:</strong> at most 100 records are kept; beyond that the least recently updated one is discarded automatically.</li>
+      <li><strong>Deleting:</strong> press and hold any record in the in-app list to delete it; removing the app deletes all of them.</li>
+      <li><strong>On the free tier</strong> the baseline copy is reduced to 4032 pixels on its long edge to save space; subscribers keep the full resolution the photo was imported at.</li>
+    </ul>
+
+    <p>Photos and videos you capture live in the system Photos app, under your control. Note that the app has two distinct lists: the camera's “this session” strip exists only in memory and is cleared when you close the camera, while the edit-record library above persists until you delete it.</p>
+
+    <p>Separately, when you share an export, GridFix writes the finished file to the system temporary directory to hand it over. That file is cleared the next time you share, and is removed along with anything else iOS reclaims from temporary storage.</p>
 
     <h2>5. Purchases</h2>
     <p>All subscriptions and one-time purchases are handled by <strong>Apple’s In-App Purchase (StoreKit)</strong>. GridFix never sees, transmits, or stores your payment details — Apple handles all of that. The app receives only whether you currently hold an entitlement, and that answer is re-checked with StoreKit rather than written to disk.</p>
@@ -488,12 +556,12 @@
 
     <h2>8. Retention and deletion</h2>
     <p>Because nothing is collected, we hold no data belonging to you, and there is therefore nothing to request the deletion of.</p>
-    <p>To clear the preferences the app stores on your device (the UserDefaults rows in section 4), <strong>remove the app from your device</strong>.</p>
-    <p>Three things to know about the daily export count held in the keychain:</p>
+    <p>To clear the preferences the app stores on your device (the UserDefaults rows in section 4) together with the whole edit-record library, <strong>remove the app from your device</strong>. Individual records can also be deleted from the record list inside the app, without removing anything else.</p>
+    <p>Three things to know about the daily counters held in the keychain:</p>
     <ul>
-      <li>Consistent with how iOS treats keychain items, it remains on your device after the app is removed. As noted in section 4, this is deliberate: it prevents the daily free allowance from being bypassed by deleting and reinstalling. Reinstalling the app therefore does not clear it.</li>
-      <li>It consists of one number and one date, resets itself each day, and contains nothing that identifies you.</li>
-      <li>Because the app has no server and never connects to any system of ours, <strong>we cannot remotely access, read, or delete anything on your device</strong>, this item included. It lives entirely on your device, where we can neither see nor reach it.</li>
+      <li>Consistent with how iOS treats keychain items, they remain on your device after the app is removed. As noted in section 4, this is deliberate: it prevents the daily free allowances from being bypassed by deleting and reinstalling. Reinstalling the app therefore does not clear them, and the app offers no way to reset them.</li>
+      <li>They consist of two numbers and one date, reset themselves each day, and contain nothing that identifies you.</li>
+      <li>Because the app has no server and never connects to any system of ours, <strong>we cannot remotely access, read, or delete anything on your device</strong>, these items included. They live entirely on your device, where we can neither see nor reach it.</li>
     </ul>
 
     <h2>9. Third parties</h2>
